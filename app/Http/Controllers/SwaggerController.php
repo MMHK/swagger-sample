@@ -19,8 +19,11 @@ class SwaggerController extends Controller
     }
 
     public function json(Request $request) {
-        define('SWAGGER_API_URI', url('api'));
+        $swagger = \Swagger\scan(base_path('app/Http/Controllers/Api'));
 
-        return \OpenApi\scan(app_path('Http/Controllers/Api'))->toJson();
+        $swagger->basePath = '/api/';
+        $swagger->host = trim(str_replace(['http://', 'https://'], '', url('')), '/');
+
+        return $swagger;
     }
 }

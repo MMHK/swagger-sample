@@ -17,10 +17,11 @@ class SampleController extends Controller
 {
 
     /**
-     * @OA\Get(
+     * @SWG\Get(
      *   path="/now",
      *   summary="一般Get",
-     *   @OA\Response(
+     *   produces={"application/json"},
+     *   @SWG\Response(
      *     response=200,
      *     description="正常返回"
      *   ),
@@ -33,19 +34,18 @@ class SampleController extends Controller
     }
 
     /**
-     * @OA\Get(
+     * @SWG\Get(
      *   path="/query",
      *   summary="带query",
-     *   @OA\Parameter(
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
      *       name="params",
      *       in="query",
      *       description="必选参数",
+     *       type="string",
      *       required=true,
-     *       @OA\Schema(
-     *         type="string",
-     *       ),
      *   ),
-     *   @OA\Response(
+     *   @SWG\Response(
      *     response=200,
      *     description="正常返回"
      *   ),
@@ -56,28 +56,25 @@ class SampleController extends Controller
     }
 
     /**
-     * @OA\Get(
+     * @SWG\Get(
      *   path="/path/{key}/{value}",
      *   summary="路径参数",
-     *   @OA\Parameter(
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
      *       name="key",
      *       in="path",
      *       description="必选参数",
      *       required=true,
-     *       @OA\Schema(
-     *         type="string",
-     *       ),
+     *       type="string",
      *   ),
-     *   @OA\Parameter(
+     *   @SWG\Parameter(
      *       name="value",
      *       in="path",
      *       description="必选参数",
      *       required=true,
-     *       @OA\Schema(
-     *         type="string",
-     *       ),
+     *       type="string",
      *   ),
-     *   @OA\Response(
+     *   @SWG\Response(
      *     response=200,
      *     description="正常返回"
      *   ),
@@ -88,19 +85,18 @@ class SampleController extends Controller
     }
 
     /**
-     * @OA\Get(
+     * @SWG\Get(
      *   path="/header",
      *   summary="HTTP 头部参数",
-     *   @OA\Parameter(
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
      *       name="auth-token",
      *       in="header",
      *       description="必选参数",
      *       required=true,
-     *       @OA\Schema(
-     *         type="string",
-     *       ),
+     *       type="string",
      *   ),
-     *   @OA\Response(
+     *   @SWG\Response(
      *     response=200,
      *     description="正常返回"
      *   ),
@@ -111,22 +107,20 @@ class SampleController extends Controller
     }
 
     /**
-     * @OA\Get(
+     * @SWG\Get(
      *   path="/array",
      *   summary="数组",
-     *   @OA\Parameter(
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
      *       name="params",
      *       in="query",
      *       description="必选参数",
      *       required=true,
-     *       @OA\Schema(
-     *          type="array",
-     *         @OA\Items(type="string"),
-     *       ),
-     *       style="deepObject",
-     *       explode=true,
+     *       type="array",
+     *       @SWG\Items(type="string"),
+     *       collectionFormat="csv",
      *   ),
-     *   @OA\Response(
+     *   @SWG\Response(
      *     response=200,
      *     description="正常返回"
      *   ),
@@ -137,30 +131,26 @@ class SampleController extends Controller
     }
 
     /**
-     * @OA\Post(
+     * @SWG\Post(
      *   path="/post",
      *   summary="数组",
-     *   @OA\RequestBody(
-     *       required=true,
-     *       @OA\MediaType(
-     *           mediaType="application/x-www-form-urlencoded",
-     *           @OA\Schema(
-     *               type="object",
-     *               @OA\Property(
-     *                   property="param1",
-     *                   description="参数1",
-     *                   type="string",
-     *               ),
-     *               @OA\Property(
-     *                   property="param2",
-     *                   description="参数2",
-     *                   type="string",
-     *               ),
-     *               required={"param1", "param2"},
-     *           )
-     *       )
+     *   consumes={"multipart/form-data"},
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
+     *          name="param1",
+     *          in="formData",
+     *          required=true,
+     *          type="string",
+     *          description="参数1",
      *   ),
-     *   @OA\Response(
+     *   @SWG\Parameter(
+     *          name="param2",
+     *          in="formData",
+     *          required=true,
+     *          type="string",
+     *          description="参数2",
+     *   ),
+     *   @SWG\Response(
      *     response=200,
      *     description="正常返回"
      *   ),
@@ -171,31 +161,26 @@ class SampleController extends Controller
     }
 
     /**
-     * @OA\Post(
+     * @SWG\Post(
      *   path="/file",
      *   summary="数组",
-     *   @OA\RequestBody(
-     *       required=true,
-     *       @OA\MediaType(
-     *           mediaType="multipart/form-data",
-     *           @OA\Schema(
-     *               type="object",
-     *               @OA\Property(
-     *                   property="file",
-     *                   description="文件",
-     *                   type="string",
-     *                   format="binary",
-     *               ),
-     *               @OA\Property(
-     *                   property="param1",
-     *                   description="参数1",
-     *                   type="string",
-     *               ),
-     *               required={"file", "param1"},
-     *           )
-     *       )
+     *   consumes={"multipart/form-data"},
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
+     *        name="file",
+     *        in="formData",
+     *        required=true,
+     *        type="file",
+     *        description="文件",
      *   ),
-     *   @OA\Response(
+     *   @SWG\Parameter(
+     *        name="param1",
+     *        in="formData",
+     *        required=true,
+     *        type="string",
+     *        description="参数1",
+     *   ),
+     *   @SWG\Response(
      *     response=200,
      *     description="正常返回"
      *   ),
@@ -209,52 +194,53 @@ class SampleController extends Controller
     }
 
     /**
-     * @OA\Post(
+     * @SWG\Post(
      *   path="/json/post",
      *   summary="复杂嵌套JSON POST",
-     *   @OA\RequestBody(
+     *   produces={"application/json"},
+     *   consumes={"application/json"},
+     *   @SWG\Parameter(
+     *       name="body",
+     *       in="body",
      *       required=true,
-     *       @OA\MediaType(
-     *           mediaType="application/json",
-     *           @OA\Schema(
+     *       @SWG\Schema(
+     *           type="object",
+     *           @SWG\Property(
+     *               property="param1",
+     *               description="参数1",
+     *               type="string",
+     *           ),
+     *           @SWG\Property(
+     *               property="param2",
+     *               description="参数2",
+     *               type="string",
+     *           ),
+     *           @SWG\Property(
+     *               property="param3",
+     *               description="参数3",
+     *               type="array",
+     *               @SWG\Items(type="number"),
+     *           ),
+     *           @SWG\Property(
+     *               property="param4",
+     *               description="参数4",
      *               type="object",
-     *               @OA\Property(
-     *                   property="param1",
-     *                   description="参数1",
+     *               @SWG\Property(
+     *                   property="arg1",
+     *                   description="参数4 - 参数1",
      *                   type="string",
      *               ),
-     *               @OA\Property(
-     *                   property="param2",
-     *                   description="参数2",
+     *               @SWG\Property(
+     *                   property="arg2",
+     *                   description="参数4 - 参数2",
      *                   type="string",
      *               ),
-     *               @OA\Property(
-     *                   property="param3",
-     *                   description="参数3",
-     *                   type="array",
-     *                   @OA\Items(type="number"),
-     *               ),
-     *               @OA\Property(
-     *                   property="param4",
-     *                   description="参数4",
-     *                   type="object",
-     *                   @OA\Property(
-     *                       property="arg1",
-     *                       description="参数4 - 参数1",
-     *                       type="string",
-     *                   ),
-     *                   @OA\Property(
-     *                       property="arg2",
-     *                       description="参数4 - 参数2",
-     *                       type="string",
-     *                   ),
-     *                   required={"arg1", "arg2"},
-     *               ),
-     *               required={"param1", "param2", "param3", "param4"},
-     *           )
+     *               required={"arg1", "arg2"},
+     *           ),
+     *           required={"param1", "param2", "param3", "param4"},
      *       )
      *   ),
-     *   @OA\Response(
+     *   @SWG\Response(
      *     response=200,
      *     description="正常返回"
      *   ),
