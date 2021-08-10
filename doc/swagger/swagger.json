@@ -1,0 +1,267 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger PHP 3.0 Sample",
+        "version": "0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api"
+        }
+    ],
+    "paths": {
+        "/now": {
+            "get": {
+                "summary": "一般Get",
+                "description": "```\r\n/**\r\n     * @OA\\Get(\r\n     *   path=\"/now\",\r\n     *   summary=\"一般Get\",\r\n     *   @OA\\Response(\r\n     *     response=200,\r\n     *     description=\"正常返回\"\r\n     *   ),\r\n     * )\r\n     */\n```",
+                "operationId": "520259585108bb5d72102065b9ba3d6e",
+                "responses": {
+                    "200": {
+                        "description": "正常返回"
+                    }
+                }
+            }
+        },
+        "/query": {
+            "get": {
+                "summary": "带query",
+                "description": "```\r\n/**\r\n     * @OA\\Get(\r\n     *   path=\"/query\",\r\n     *   summary=\"带query\",\r\n     *   @OA\\Parameter(\r\n     *       name=\"params\",\r\n     *       in=\"query\",\r\n     *       description=\"必选参数\",\r\n     *       required=true,\r\n     *       @OA\\Schema(\r\n     *         type=\"string\",\r\n     *       ),\r\n     *   ),\r\n     *   @OA\\Response(\r\n     *     response=200,\r\n     *     description=\"正常返回\"\r\n     *   ),\r\n     * )\r\n     */\n```",
+                "operationId": "e43a6ab77db72e6e34133fd253b5f6b1",
+                "parameters": [
+                    {
+                        "name": "params",
+                        "in": "query",
+                        "description": "必选参数",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "正常返回"
+                    }
+                }
+            }
+        },
+        "/path/{key}/{value}": {
+            "get": {
+                "summary": "路径参数",
+                "description": "```\r\n/**\r\n     * @OA\\Get(\r\n     *   path=\"/path/{key}/{value}\",\r\n     *   summary=\"路径参数\",\r\n     *   @OA\\Parameter(\r\n     *       name=\"key\",\r\n     *       in=\"path\",\r\n     *       description=\"必选参数\",\r\n     *       required=true,\r\n     *       @OA\\Schema(\r\n     *         type=\"string\",\r\n     *       ),\r\n     *   ),\r\n     *   @OA\\Parameter(\r\n     *       name=\"value\",\r\n     *       in=\"path\",\r\n     *       description=\"必选参数\",\r\n     *       required=true,\r\n     *       @OA\\Schema(\r\n     *         type=\"string\",\r\n     *       ),\r\n     *   ),\r\n     *   @OA\\Response(\r\n     *     response=200,\r\n     *     description=\"正常返回\"\r\n     *   ),\r\n     * )\r\n     */\n```",
+                "operationId": "43308962836e9d27954408daf9ad802e",
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "必选参数",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "in": "path",
+                        "description": "必选参数",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "正常返回"
+                    }
+                }
+            }
+        },
+        "/header": {
+            "get": {
+                "summary": "HTTP 头部参数",
+                "description": "```\r\n/**\r\n     * @OA\\Get(\r\n     *   path=\"/header\",\r\n     *   summary=\"HTTP 头部参数\",\r\n     *   @OA\\Parameter(\r\n     *       name=\"auth-token\",\r\n     *       in=\"header\",\r\n     *       description=\"必选参数\",\r\n     *       required=true,\r\n     *       @OA\\Schema(\r\n     *         type=\"string\",\r\n     *       ),\r\n     *   ),\r\n     *   @OA\\Response(\r\n     *     response=200,\r\n     *     description=\"正常返回\"\r\n     *   ),\r\n     * )\r\n     */\n```",
+                "operationId": "2e5ebc6942c1159aaf3a530823102b38",
+                "parameters": [
+                    {
+                        "name": "auth-token",
+                        "in": "header",
+                        "description": "必选参数",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "正常返回"
+                    }
+                }
+            }
+        },
+        "/array": {
+            "get": {
+                "summary": "数组",
+                "description": "```\r\n/**\r\n     * @OA\\Get(\r\n     *   path=\"/array\",\r\n     *   summary=\"数组\",\r\n     *   @OA\\Parameter(\r\n     *       name=\"params\",\r\n     *       in=\"query\",\r\n     *       description=\"必选参数\",\r\n     *       required=true,\r\n     *       @OA\\Schema(\r\n     *          type=\"array\",\r\n     *         @OA\\Items(type=\"string\"),\r\n     *       ),\r\n     *       style=\"deepObject\",\r\n     *       explode=true,\r\n     *   ),\r\n     *   @OA\\Response(\r\n     *     response=200,\r\n     *     description=\"正常返回\"\r\n     *   ),\r\n     * )\r\n     */\n```",
+                "parameters": [
+                    {
+                        "name": "params",
+                        "in": "query",
+                        "description": "必选参数",
+                        "required": true,
+                        "style": "deepObject",
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "正常返回"
+                    }
+                }
+            }
+        },
+        "/post": {
+            "post": {
+                "summary": "数组",
+                "description": "```\r\n/**\r\n     * @OA\\Post(\r\n     *   path=\"/post\",\r\n     *   summary=\"数组\",\r\n     *   @OA\\RequestBody(\r\n     *       required=true,\r\n     *       @OA\\MediaType(\r\n     *           mediaType=\"application/x-www-form-urlencoded\",\r\n     *           @OA\\Schema(\r\n     *               type=\"object\",\r\n     *               @OA\\Property(\r\n     *                   property=\"param1\",\r\n     *                   description=\"参数1\",\r\n     *                   type=\"string\",\r\n     *               ),\r\n     *               @OA\\Property(\r\n     *                   property=\"param2\",\r\n     *                   description=\"参数2\",\r\n     *                   type=\"string\",\r\n     *               ),\r\n     *               required={\"param1\", \"param2\"},\r\n     *           )\r\n     *       )\r\n     *   ),\r\n     *   @OA\\Response(\r\n     *     response=200,\r\n     *     description=\"正常返回\"\r\n     *   ),\r\n     * )\r\n     */\n```",
+                "operationId": "7df22389de50a7de65e14acfb78ee62a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "param1",
+                                    "param2"
+                                ],
+                                "properties": {
+                                    "param1": {
+                                        "description": "参数1",
+                                        "type": "string"
+                                    },
+                                    "param2": {
+                                        "description": "参数2",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "正常返回"
+                    }
+                }
+            }
+        },
+        "/file": {
+            "post": {
+                "summary": "数组",
+                "description": "```\r\n/**\r\n     * @OA\\Post(\r\n     *   path=\"/file\",\r\n     *   summary=\"数组\",\r\n     *   @OA\\RequestBody(\r\n     *       required=true,\r\n     *       @OA\\MediaType(\r\n     *           mediaType=\"multipart/form-data\",\r\n     *           @OA\\Schema(\r\n     *               type=\"object\",\r\n     *               @OA\\Property(\r\n     *                   property=\"file\",\r\n     *                   description=\"文件\",\r\n     *                   type=\"string\",\r\n     *                   format=\"binary\",\r\n     *               ),\r\n     *               @OA\\Property(\r\n     *                   property=\"param1\",\r\n     *                   description=\"参数1\",\r\n     *                   type=\"string\",\r\n     *               ),\r\n     *               required={\"file\", \"param1\"},\r\n     *           )\r\n     *       )\r\n     *   ),\r\n     *   @OA\\Response(\r\n     *     response=200,\r\n     *     description=\"正常返回\"\r\n     *   ),\r\n     * )\r\n     */\n```",
+                "operationId": "fcf020daf6733fb8084158ca3ca023ac",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "file",
+                                    "param1"
+                                ],
+                                "properties": {
+                                    "file": {
+                                        "description": "文件",
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "param1": {
+                                        "description": "参数1",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "正常返回"
+                    }
+                }
+            }
+        },
+        "/json/post": {
+            "post": {
+                "summary": "复杂嵌套JSON POST",
+                "description": "```\r\n/**\r\n     * @OA\\Post(\r\n     *   path=\"/json/post\",\r\n     *   summary=\"复杂嵌套JSON POST\",\r\n     *   @OA\\RequestBody(\r\n     *       required=true,\r\n     *       @OA\\MediaType(\r\n     *           mediaType=\"application/json\",\r\n     *           @OA\\Schema(\r\n     *               type=\"object\",\r\n     *               @OA\\Property(\r\n     *                   property=\"param1\",\r\n     *                   description=\"参数1\",\r\n     *                   type=\"string\",\r\n     *               ),\r\n     *               @OA\\Property(\r\n     *                   property=\"param2\",\r\n     *                   description=\"参数2\",\r\n     *                   type=\"string\",\r\n     *               ),\r\n     *               @OA\\Property(\r\n     *                   property=\"param3\",\r\n     *                   description=\"参数3\",\r\n     *                   type=\"array\",\r\n     *                   @OA\\Items(type=\"number\"),\r\n     *               ),\r\n     *               @OA\\Property(\r\n     *                   property=\"param4\",\r\n     *                   description=\"参数4\",\r\n     *                   type=\"object\",\r\n     *                   @OA\\Property(\r\n     *                       property=\"arg1\",\r\n     *                       description=\"参数4 - 参数1\",\r\n     *                       type=\"string\",\r\n     *                   ),\r\n     *                   @OA\\Property(\r\n     *                       property=\"arg2\",\r\n     *                       description=\"参数4 - 参数2\",\r\n     *                       type=\"string\",\r\n     *                   ),\r\n     *                   required={\"arg1\", \"arg2\"},\r\n     *               ),\r\n     *               required={\"param1\", \"param2\", \"param3\", \"param4\"},\r\n     *           )\r\n     *       )\r\n     *   ),\r\n     *   @OA\\Response(\r\n     *     response=200,\r\n     *     description=\"正常返回\"\r\n     *   ),\r\n     * )\r\n     */\n```",
+                "operationId": "12dd68c38ea7c5a3c973489789168565",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "param1",
+                                    "param2",
+                                    "param3",
+                                    "param4"
+                                ],
+                                "properties": {
+                                    "param1": {
+                                        "description": "参数1",
+                                        "type": "string"
+                                    },
+                                    "param2": {
+                                        "description": "参数2",
+                                        "type": "string"
+                                    },
+                                    "param3": {
+                                        "description": "参数3",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "param4": {
+                                        "description": "参数4",
+                                        "required": [
+                                            "arg1",
+                                            "arg2"
+                                        ],
+                                        "properties": {
+                                            "arg1": {
+                                                "description": "参数4 - 参数1",
+                                                "type": "string"
+                                            },
+                                            "arg2": {
+                                                "description": "参数4 - 参数2",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "正常返回"
+                    }
+                }
+            }
+        }
+    }
+}
