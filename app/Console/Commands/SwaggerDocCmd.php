@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 
 class SwaggerDocCmd extends Command
 {
-    const PATH_DOC = 'doc/swagger';
+    const PATH_DOC = 'docs';
     /**
      * The name and signature of the console command.
      *
