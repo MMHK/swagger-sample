@@ -15,6 +15,22 @@ use Illuminate\Http\Request;
 
 class SampleController extends Controller
 {
+    /**
+     * @OA\Post(
+     *   path="/auth",
+     *   security={
+     *       {"api_key": {}}
+     *   },
+     *   summary="权鉴",
+     *   @OA\Response(
+     *     response=200,
+     *     description="正常返回"
+     *   ),
+     * )
+     */
+    public function auth() {
+        return [];
+    }
 
     /**
      * @OA\Get(
