@@ -2,6 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Swagger PHP 3.0 Sample",
+        "description": "### 增加鉴权注释\r\n\r\n在扫描目录下增加 `doc.php` 内容如下\r\n\r\n```\r\n<?php\r\n\r\n/**\r\n * @OA\\Info(\r\n *     title=\"Swagger PHP 3.0 Sample\",\r\n *     version=\"0.1\",\r\n * )\r\n * @OA\\Server(url=SWAGGER_API_URI)\r\n *\r\n * @OA\\SecurityScheme(\r\n *  securityScheme=\"api_key\",\r\n *  type=\"apiKey\",\r\n *  in=\"header\",\r\n *  name=\"Authorization\", \r\n * ) \r\n */\r\n```\r\n",
         "version": "0.1"
     },
     "servers": [
@@ -10,6 +11,23 @@
         }
     ],
     "paths": {
+        "/auth": {
+            "post": {
+                "summary": "权鉴",
+                "description": "```\r\n/**\r\n     * @OA\\Post(\r\n     *   path=\"/auth\",\r\n     *   security={\r\n     *       {\"api_key\": {}}\r\n     *   },\r\n     *   summary=\"权鉴\",\r\n     *   @OA\\Response(\r\n     *     response=200,\r\n     *     description=\"正常返回\"\r\n     *   ),\r\n     * )\r\n     */\n```",
+                "operationId": "a65de06cf7e514ee4dc6b728eb02d231",
+                "responses": {
+                    "200": {
+                        "description": "正常返回"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
         "/now": {
             "get": {
                 "summary": "一般Get",
@@ -261,6 +279,15 @@
                         "description": "正常返回"
                     }
                 }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "api_key": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
             }
         }
     }
